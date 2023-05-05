@@ -33,6 +33,7 @@ namespace ProductosPruebaM.Modelos
 
         [DisplayName("Documento Tecnico")]
         public string? DocumentoTecnico { get; set; }
+
         [NotMapped]
         public IFormFile? DocumentoTecnicoIFormFile { get; set; }
         public string DocumentoTecnicoURL => DocumentoTecnico == null ? "" : DocumentoTecnico;

@@ -8,7 +8,6 @@ namespace ProductosPruebaM.Modelos
         public int Id { get; set; }
 
         [DisplayName("Categoria")]
-        public int IdCategoria { get; set; }
         public string NombreCategoria { get; set; } = string.Empty;
 
         [DisplayName("Nombre Producto")]
@@ -30,7 +29,6 @@ namespace ProductosPruebaM.Modelos
         public DateTime FechaVencimiento { get; set; }
 
         [DisplayName("Proveedores")]
-        public int IdProveedor { get; set; }
         public string NombreProveedor { get; set; } = string.Empty;
 
         [DisplayName("Documento Tecnico")]
@@ -55,9 +53,9 @@ namespace ProductosPruebaM.Modelos
         }
 
         [DisplayName("Imagen")]
-        public string? Imagen { get; set; }
+        public string Imagen { get; set; } = string.Empty;
         [NotMapped]
-        public IFormFile? ImagenIFormFile { get; set; }
+        public IFormFile ImagenIFormFile { get; set; }
         public string ImagenURL => Imagen == null ? "" : Imagen;
 
         public string ImagenURL2
@@ -76,12 +74,11 @@ namespace ProductosPruebaM.Modelos
         }
 
         public bool Estado { get; set; }
-        [NotMapped]
-        public string? ProveedorDescripcion { get; set; }
 
         [DisplayName("Zona")]
         [NotMapped]
         public int IdZona { get; set; }
         public string NombreZona { get; set; } = string.Empty;
+
     }
 }

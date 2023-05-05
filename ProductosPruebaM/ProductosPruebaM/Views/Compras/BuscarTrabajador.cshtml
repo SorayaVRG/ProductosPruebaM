@@ -1,0 +1,41 @@
+﻿@model IEnumerable<ProductosPruebaM.Modelos.Trabajadores>
+
+<div class="ibox-content">
+    <br />
+    <form class="form-inline" method="post">
+        <div class="p-l-35">
+            <input class="form-control input-sm" type="text" name="trabajador" id="parametroBusqueda" placeholder="Buscar trabajador..." style="width:250px;" />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a onclick="onclickBuscarTrabajador();" id="boton" class="btn btn-success add2-dialog-window">Buscar</a>
+        </div>
+    </form>
+    <br />
+    @if (Model.Count() != 0)
+    {
+        <div class="table-responsive table-sm table-hover" style="max-height:500px !important; overflow-y:scroll">
+            <table id="tablaBuscarTrabajador3" class="table table-hover">
+                <thead>
+                    <tr>
+                        <th hidden>Id</th>
+                        <th>Trabajadores</th>
+                    </tr>
+                </thead>
+                <tbody class="table-bordered">
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td hidden>@item.Id</td>
+                            <td>@item.Nombres</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        <a onclick="GuardarE3()" class="btn btn-danger btn-block">Guardar</a>
+    }
+
+    <div class="alert alert-warning" style="display:@ViewBag.styleE">
+        No se encontraron registros.
+    </div>
+</div>

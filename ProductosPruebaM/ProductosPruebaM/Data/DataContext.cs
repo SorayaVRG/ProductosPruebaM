@@ -15,5 +15,8 @@ namespace ProductosPruebaM.Data
         public DbSet<Productos> Productos { get; set; }
         public DbSet<Proveedores> Proveedores { get; set; }
         public DbSet<PR_PRODUCTOS_Q01> PR_PRODUCTOS_Q01 { get; set; }
+        public DbSet<PR_COMPRAS_S01> PR_COMPRAS_S01 { get; set; }
+        public DbSet<Trabajadores> Trabajadores { get; set; } // Agrega esta línea para definir el DbSet de Trabajadores
+        public DbSet<Compras> Compras { get; set; }
     }
 }

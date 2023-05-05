@@ -11,6 +11,7 @@
     <Folder Include="Views\Proveedores\" />
     <Folder Include="wwwroot\images\DocumentoTecnico\" />
     <Folder Include="wwwroot\images\Imagen\" />
+    <Folder Include="wwwroot\images\Boleta\" />
   </ItemGroup>
 
   <ItemGroup>

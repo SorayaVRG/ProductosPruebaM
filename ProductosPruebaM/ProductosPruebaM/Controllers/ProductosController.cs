@@ -20,22 +20,14 @@ namespace ProductosPruebaM.Controllers
             _webHostEnvironment = webHostEnvironment;
         }
 
+        //BUSCAR TRABAJADOR
         public async Task<IActionResult> BuscarProveedor(string busqueda)
         {
             var proveedores = await _context.Proveedores.Where(t => t.NombreProveedor.Contains(busqueda)).ToListAsync();
             return PartialView(proveedores);
         }
 
-        ////Index
-        //public async Task<IActionResult> Index(int id)
-        //{
-        //    var productos = await _context.Productos.Where(t => t.IdCategoria.Equals(id)).ToListAsync();
-        //    var modelCategorias = await _context.Categorias.FindAsync(id);
-        //    ViewBag.Categorias = modelCategorias;
-        //    return View(productos);
-        //}
-
-        //GET : /<Controller>/
+        //VISUALIZACION INDEX
         [HttpGet]
         public IActionResult Index()
         {
@@ -45,27 +37,6 @@ namespace ProductosPruebaM.Controllers
             var productos = _context.PR_PRODUCTOS_Q01.FromSqlRaw("exec PR_PRODUCTOS_Q01");
             return View(productos);
         }
-
-
-        //Create
-        //public async Task<IActionResult> Create(int idCategorias)
-        //{
-        //    var listadoZonas = await _context.Zonas.ToListAsync();
-        //    ViewData["IdZona"] = new SelectList(listadoZonas, "Id", "NombreZona");
-
-        //    var listadoCatergorias = await _context.Categorias.ToListAsync();
-        //    ViewData["IdCategoria"] = new SelectList(listadoCatergorias, "Id", "NombreCategoria");
-
-        //    var productos = new Productos { IdCategoria = idCategorias, FechaVencimiento = DateTime.Now.Date };
-        //    return View(productos);
-        //}
-        //[HttpPost]
-        //public async Task<IActionResult> Create(Productos model)
-        //{
-        //    await _context.AddAsync(model);
-        //    await _context.SaveChangesAsync();
-        //    return RedirectToAction("Index", new { id = model.IdCategoria });
-        //}
 
         //CREATE ACTUALIZADO
         [HttpGet]
