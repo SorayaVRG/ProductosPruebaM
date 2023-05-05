@@ -1,0 +1,48 @@
+﻿@model IEnumerable<ProductosPruebaM.Modelos.Proveedores>
+
+<div class="ibox-content">
+    <br />
+    <form class="form-inline" method="post">
+        <div class="p-l-35">
+            <input class="form-control input-sm" type="text" name="proveedor" id="parametroBusqueda" placeholder="Buscar proveedor..." style="width:250px;" />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a onclick="onclickBuscarProveedor();" id="boton" class="btn btn-success  add2-dialog-window">Buscar</a>
+        </div>
+    </form>
+    <br />
+    @if (Model.Count() != 0)
+    {
+        <div class="table-responsive table-sm table-hover" style="max-height:500px !important; overflow-y:scroll">
+            <table id="tablaBuscarProveedor3" class="table table-hover">
+                <thead>
+                    <tr>
+                        <th hidden>Id</th>
+                        <th>Ruc</th>
+                        <th>Nombre Razón Social</th>
+                    </tr>
+                </thead>
+                <tbody class="table-bordered">
+                    @foreach (var item in Model)
+                    {
+
+                        <tr>
+                            <td hidden>@item.Id</td>
+                            <td>@item.Ruc</td>
+                            <td>@item.NombreProveedor</td>
+                        </tr>
+
+                    }
+                </tbody>
+
+            </table>
+        </div>
+
+
+
+        <a onclick="GuardarE3()" class="btn btn-danger btn-block ">Guardar</a>
+    }
+
+    <div class="alert alert-warning" style="display:@ViewBag.styleE">
+        No se encontraron registros.
+    </div>
+</div>

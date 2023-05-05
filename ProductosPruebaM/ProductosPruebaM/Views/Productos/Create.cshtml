@@ -1,0 +1,145 @@
+﻿@model ProductosPruebaM.Modelos.Productos
+
+<div class="ibox-content">
+    <div class="row">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="col col-sm-12">
+                <div class="form-group">
+                    <div class="input text">
+                        @*crear un cuadro de texto donde se rellenaran los siguientes datos*@
+                        <div class="form-group">
+                            <label asp-for="IdZona" class="control-label">Zona</label>
+                            <select asp-for="IdZona" class="form-control" asp-items="ViewBag.IdZona" id="comboZona" onchange="onchangeZonas()"></select>
+                            <span asp-validation-for="IdZona" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="IdCategoria" class="control-label"></label>
+                            <select asp-for="IdCategoria" class="form-control" id="comboCategoria"></select>
+                            <span asp-validation-for="IdCategoria" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="NombreProducto" class="control-label"></label>
+                            <input asp-for="NombreProducto" class="form-control" />
+                            <span asp-validation-for="NombreProducto" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Marca" class="control-label"></label>
+                            <input asp-for="Marca" class="form-control" />
+                            <span asp-validation-for="Marca" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="UnidadMedida" class="control-label"></label>
+                            <input asp-for="UnidadMedida" class="form-control" />
+                            <span asp-validation-for="UnidadMedida" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Precio" class="control-label"></label>
+                            <input asp-for="Precio" class="form-control" />
+                            <span asp-validation-for="Precio" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Stock" class="control-label"></label>
+                            <input asp-for="Stock" class="form-control" />
+                            <span asp-validation-for="Stock" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="FechaVencimiento" class="control-label"></label>
+                            <input asp-for="FechaVencimiento" class="form-control" />
+                            <span asp-validation-for="FechaVencimiento" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <input class="form-control input-sm" id="IdProveedores" asp-for="IdProveedor" />
+                            <label class="control-label">
+                                Proveedor
+                                <a onclick="onclickBuscarProveedor()" class="btn btn-sm btn-info text-white">Buscar</a>
+                            </label>
+                            <input required disabled class="form-control nom_prove" />
+                            <input type="hidden" asp-for="ProveedorDescripcion" id="emp_prove" name="ProveedorDescripcion" class="form-control nom_prove" />
+                        </div>
+
+                        <div class="form-group">
+                            <div class="input text">
+                                <label asp-for="DocumentoTecnicoIFormFile" class="control-label">Documento tecnico</label>
+                                <input asp-for="DocumentoTecnicoIFormFile" class="form-control" accept="application/pdf" />
+                                <span asp-validation-for="DocumentoTecnicoIFormFile" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input text">
+                                <label asp-for="ImagenIFormFile" class="control-label">Imagen</label>
+                                <input asp-for="ImagenIFormFile" class="form-control" type="file" accept="image/png, image/jpeg">
+                                <span asp-validation-for="ImagenIFormFile" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Estado" class="control-label">Estado</label>
+                            <input asp-for="Estado" class="form-control" />
+                            <span asp-validation-for="Estado" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col col-sm-12 text-right">
+                <div class="form-group">
+                    <input type="submit" value="Guardar" class="btn btn-success" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="ProveedorModal" aria-hidden="true">
+    <div class="modal-dialog modal-lg" style="width:50%;">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color:green;color:white;">
+                <h5 class="modal-title" id="TittleCreatemodel">Crear Registro</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="teeee">Please wait...</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="EditModal" aria-hidden="true">
+    <div class="modal-dialog modal-lg" style="width:50%;">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color:orange;color:white;">
+                <h5 class="modal-title" id="TittleCreatemodel">Actualizar Registro</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="teeee">Please wait...</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="Anular" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color:#da2213;color:white;">
+                <button data-dismiss="modal" class="close" type="button">
+                    <span aria-hidden="true">×</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <h2 class="modal-title">Eliminar Productos</h2>
+            </div>
+            <div class="modal-body">
+                <div class="text-center">
+                    <h4>¿Estas seguro de eliminar el registro seleccionado?</h4>
+                </div>
+                <div id="response" class="text-right">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
