@@ -322,19 +322,6 @@
     </script>
 
     <script>
-        //PARA HACER EL COMBO ANIDADO
-        function onchangeZonas() {
-            let idZona = $("#comboZona").val();
-            CargarCategorias(idZona);
-        }
-        function CargarCategorias(idZona) {
-            fetchGet("/Productos/CargarCategorias/?id=" + idZona, function (data) {
-                llenarCombo(data, "comboCategoria", "nombreCategoria", "id", "0");
-            });
-        }
-    </script>
-
-    <script>
         $(document).ready(function () {
             //ESTE ES PARA EL DATATABLES
             $('#example').DataTable({
